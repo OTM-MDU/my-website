@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Ömürboyu Təhsil Məktəbi</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Responsive Base Styles */
+        * {
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            overflow-x: hidden;
+            -webkit-text-size-adjust: 100%;
+            -moz-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+        
+        /* Responsive Typography */
+        .text-responsive {
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+        }
+        
+        .heading-responsive {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+        }
+        
+        .subheading-responsive {
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+        }
+        
+        /* Responsive Images */
+        .responsive-img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Touch-friendly buttons */
+        .touch-button {
+            min-height: 44px;
+            min-width: 44px;
+            padding: 12px 24px;
+        }
+        
+        /* Responsive Tables */
+        .responsive-table {
+            width: 100%;
+            display: block;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        /* Mobile First Grid */
+        .mobile-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+        
+        /* Responsive Spacing */
+        .section-padding {
+            padding: clamp(1.5rem, 5vw, 3rem) clamp(1rem, 4vw, 2rem);
+        }
+        
+        /* Responsive Container */
+        .responsive-container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 clamp(1rem, 4vw, 2rem);
+        }
+        
+        /* Card Responsive */
+        .responsive-card {
+            min-height: 200px;
+            padding: clamp(1rem, 3vw, 1.5rem);
+        }
+        
+        /* Hide/Show elements based on screen size */
+        .mobile-only {
+            display: block;
+        }
+        
+        .desktop-only {
+            display: none;
+        }
+        
+        /* Landscape mode adjustments */
+        @media (orientation: landscape) and (max-height: 500px) {
+            .landscape-adjust {
+                padding: 1rem !important;
+            }
+        }
+        
+        /* Very small devices */
+        @media (max-width: 320px) {
+            .xs-adjust {
+                font-size: 0.875rem !important;
+                padding: 0.5rem !important;
+            }
+        }
+        
+        /* Tablet adjustments */
+        @media (min-width: 640px) {
+            .mobile-only {
+                display: none;
+            }
+            
+            .desktop-only {
+                display: block;
+            }
+            
+            .tablet-grid-2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* Desktop adjustments */
+        @media (min-width: 1024px) {
+            .desktop-grid-3 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .desktop-grid-4 {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        
+        /* Large screens */
+        @media (min-width: 1536px) {
+            .xl-container {
+                max-width: 1536px;
+            }
+        }
+        
+        /* High DPI screens */
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            .high-dpi {
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
+        }
+        
+        /* Print styles */
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            
+            .print-black {
+                color: #000 !important;
+                background: #fff !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 high-dpi">
+    <!-- Navigation - Optimized for all devices -->
+    <nav class="bg-blue-800 text-white shadow-lg sticky top-0 z-50">
+        <div class="responsive-container">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <img style="width: 50px;" src="C:\Users\Elcan\Desktop\Web_sayt\otm2.png">
+                    
+                    <span class="font-bold text-lg sm:text-xl">Ömürboyu Təhsil Məktəbi</span>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden sm:flex space-x-4 lg:space-x-6">
+                    <a href="#home" class="hover:text-yellow-300 px-2 py-1 touch-button">Ana Səhifə</a>
+                    <a href="#departments" class="hover:text-yellow-300 px-2 py-1 touch-button">Bölmələr</a>
+                    <a href="#courses" class="hover:text-yellow-300 px-2 py-1 touch-button">Kurslar</a>
+                    <a href="#schedule" class="hover:text-yellow-300 px-2 py-1 touch-button">Cədvəl</a>
+                    <a href="#news" class="hover:text-yellow-300 px-2 py-1 touch-button">Xəbərlər</a>
+                    <a href="#contact" class="hover:text-yellow-300 px-2 py-1 touch-button">Əlaqə</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button class="sm:hidden touch-button" id="menuBtn" aria-label="Menyunu aç">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="sm:hidden bg-blue-700 hidden">
+            <div class="flex flex-col p-4 space-y-2">
+                <a href="#home" class="text-white hover:text-yellow-300 py-3 px-4 border-b border-blue-600">Ana Səhifə</a>
+                <a href="#departments" class="text-white hover:text-yellow-300 py-3 px-4 border-b border-blue-600">Bölmələr</a>
+                <a href="#courses" class="text-white hover:text-yellow-300 py-3 px-4 border-b border-blue-600">Kurslar</a>
+                <a href="#schedule" class="text-white hover:text-yellow-300 py-3 px-4 border-b border-blue-600">Cədvəl</a>
+                <a href="#news" class="text-white hover:text-yellow-300 py-3 px-4 border-b border-blue-600">Xəbərlər</a>
+                <a href="#contact" class="text-white hover:text-yellow-300 py-3 px-4">Əlaqə</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section - Responsive -->
+    <section id="home" class="bg-gradient-to-r from-blue-600 to-blue-800 text-white section-padding landscape-adjust">
+        <div class="responsive-container text-center">
+            <h1 class="heading-responsive font-bold mb-4 leading-tight">
+                Ömürboyu Təhsil Məktəbinə Xoş Gəldiniz
+            </h1>
+            <p class="text-responsive mb-8 max-w-3xl mx-auto">
+                Peşəkar inkişaf üçün ən yaxşı təhsil imkanları - hər cihazda, hər yerdə
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#courses" class="bg-yellow-400 text-blue-900 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-lg hover:bg-yellow-300 transition touch-button text-center">
+                    Kursları Kəşf Edin
+                </a>
+                <a href="#contact" class="bg-transparent border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-lg hover:bg-white hover:text-blue-800 transition touch-button text-center">
+                    Əlaqə Saxlayın
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Departments Section - Responsive Grid -->
+    <section id="departments" class="section-padding bg-white">
+        <div class="responsive-container">
+            <h2 class="subheading-responsive font-bold text-center mb-8 sm:mb-12 text-blue-800">
+                Təhsil Bölmələrimiz
+            </h2>
+            
+            <div class="mobile-grid tablet-grid-2 desktop-grid-3 gap-4 sm:gap-6 lg:gap-8">
+                <!-- Department 1 -->
+                <div class="responsive-card bg-blue-50 rounded-xl shadow-lg border border-blue-200">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-university text-4xl sm:text-5xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-bold mb-3 text-center">Qiyabi və Təkrər Ali Təhsil</h3>
+                    <ul class="space-y-2 text-sm sm:text-base">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Bakalavr və magistratura proqramları</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-2 mt-1 flex-shrink-0"></i>
+                            <span>İkinci ali təhsil imkanları</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Online və hibrid tədris formatları</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Akademik kredit sistemi</span>
+                        </li>
+                    </ul>
+                    <button class="w-full mt-4 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition touch-button department-details" data-dept="qiyabi">
+                        Ətraflı Məlumat
+                    </button>
+                </div>
+                
+                <!-- Department 2 -->
+                <div class="responsive-card bg-green-50 rounded-xl shadow-lg border border-green-200">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-cogs text-4xl sm:text-5xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-bold mb-3 text-center">Mühəndis İnkişafı</h3>
+                    <ul class="space-y-2 text-sm sm:text-base">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Texniki peşəkar kurslar</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Beynəlxalq sertifikat proqramları</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Peşəkar təkmilləşdirmə treninqləri</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Sənaye əməkdaşlığı ilə praktiki təhsil</span>
+                        </li>
+                    </ul>
+                    <button class="w-full mt-4 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition touch-button department-details" data-dept="muhendis">
+                        Ətraflı Məlumat
+                    </button>
+                </div>
+                
+                <!-- Department 3 -->
+                <div class="responsive-card bg-purple-50 rounded-xl shadow-lg border border-purple-200">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-globe-americas text-4xl sm:text-5xl text-purple-600"></i>
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-bold mb-3 text-center">Beynəlxalq Dil Bölməsi</h3>
+                    <ul class="space-y-2 text-sm sm:text-base">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-2 mt-1 flex-shrink-0"></i>
+                            <span>İngilis dili (A1-C2 bütün səviyyələr)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Alman, Fransız, İspan dilləri</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-2 mt-1 flex-shrink-0"></i>
+                            <span>IELTS/TOEFL hazırlığı</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Biznes və peşəkar dil kursları</span>
+                        </li>
+                    </ul>
+                    <button class="w-full mt-4 bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition touch-button department-details" data-dept="dil">
+                        Ətraflı Məlumat
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section - Responsive Cards -->
+    <section id="courses" class="section-padding bg-gray-50">
+        <div class="responsive-container">
+            <h2 class="subheading-responsive font-bold text-center mb-8 sm:mb-12 text-blue-800">
+                Populyar Kurslar
+            </h2>
+            
+            <!-- Filter Buttons for Mobile -->
+            <div class="flex overflow-x-auto pb-4 mb-6 sm:mb-8 sm:justify-center gap-2 touch-pan-x">
+                <button class="filter-btn px-4 py-2 rounded-lg whitespace-nowrap bg-blue-600 text-white touch-button" data-filter="all">
+                    Hamısı
+                </button>
+                <button class="filter-btn px-4 py-2 rounded-lg whitespace-nowrap bg-gray-200 hover:bg-gray-300 touch-button" data-filter="tech">
+                    Texnologiya
+                </button>
+                <button class="filter-btn px-4 py-2 rounded-lg whitespace-nowrap bg-gray-200 hover:bg-gray-300 touch-button" data-filter="language">
+                    Dil
+                </button>
+                <button class="filter-btn px-4 py-2 rounded-lg whitespace-nowrap bg-gray-200 hover:bg-gray-300 touch-button" data-filter="business">
+                    Biznes
+                </button>
+            </div>
+            
+            <div class="mobile-grid tablet-grid-2 desktop-grid-3 gap-4 sm:gap-6" id="coursesContainer">
+                <!-- Courses will be loaded dynamically -->
+            </div>
+            
+            <div class="text-center mt-8 sm:mt-12">
+                <button id="loadMoreCourses" class="bg-blue-800 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg hover:bg-blue-900 transition touch-button">
+                    Daha Çox Kurs Göstər
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule Section - Responsive Table -->
+    <section id="schedule" class="section-padding bg-white">
+        <div class="responsive-container">
+            <h2 class="subheading-responsive font-bold text-center mb-8 sm:mb-12 text-blue-800">
+                Dərs Cədvəli
+            </h2>
+            
+            <!-- Responsive Controls -->
+            <div class="flex flex-col sm:flex-row gap-4 mb-6 sm:mb-8">
+                <div class="flex-1">
+                    <label for="groupSelect" class="block mb-2 font-bold text-sm sm:text-base">Qrupu Seçin:</label>
+                    <select id="groupSelect" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm sm:text-base touch-button">
+                        <option value="group1">WEB-101 (Full Stack Development)</option>
+                        <option value="group2">ENG-C1 (İngilis Dili C1)</option>
+                        <option value="group3">IoT-201 (Sənaye 4.0 & IoT)</option>
+                        <option value="group4">MBA-301 (Biznes İdarəetmə)</option>
+                    </select>
+                </div>
+                
+                <div class="flex-1">
+                    <label for="weekSelect" class="block mb-2 font-bold text-sm sm:text-base">Həftəni Seçin:</label>
+                    <select id="weekSelect" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm sm:text-base touch-button">
+                        <option value="current">Cari Həftə</option>
+                        <option value="next">Növbəti Həftə</option>
+                        <option value="week3">3-cü Həftə</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Responsive Table Container -->
+            <div class="responsive-table">
+                <table class="min-w-full border-collapse border border-gray-300">
+                    <thead>
+                        <tr class="bg-blue-100">
+                            <th class="border border-gray-300 p-3 text-left text-sm sm:text-base">Gün</th>
+                            <th class="border border-gray-300 p-3 text-left text-sm sm:text-base">Saat</th>
+                            <th class="border border-gray-300 p-3 text-left text-sm sm:text-base">Dərs</th>
+                            <th class="border border-gray-300 p-3 text-left text-sm sm:text-base">Müəllim</th>
+                            <th class="border border-gray-300 p-3 text-left text-sm sm:text-base">Otaq</th>
+                            <th class="border border-gray-300 p-3 text-left text-sm sm:text-base">Format</th>
+                        </tr>
+                    </thead>
+                    <tbody id="scheduleBody" class="text-sm sm:text-base">
+                        <!-- Schedule will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Mobile Schedule View (Cards) -->
+            <div id="mobileSchedule" class="mt-6 sm:hidden">
+                <!-- Mobile schedule cards will be inserted here -->
+            </div>
+            
+            <!-- Download Options -->
+            <div class="mt-8 flex flex-col sm:flex-row gap-4">
+                <button class="flex-1 bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition touch-button flex items-center justify-center gap-2">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Cədvəli İdxal Et</span>
+                </button>
+                <button class="flex-1 bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition touch-button flex items-center justify-center gap-2">
+                    <i class="fas fa-print"></i>
+                    <span>Çap Et</span>
+                </button>
+                <button class="flex-1 bg-gray-600 text-white py-3 rounded-lg hover:bg-gray-700 transition touch-button flex items-center justify-center gap-2">
+                    <i class="fas fa-share-alt"></i>
+                    <span>Paylaş</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section - Responsive -->
+    <section id="news" class="section-padding bg-gray-50">
+        <div class="responsive-container">
+            <h2 class="subheading-responsive font-bold text-center mb-8 sm:mb-12 text-blue-800">
+                Son Xəbərlər və Elanlar
+            </h2>
+            
+            <div class="mobile-grid tablet-grid-2 gap-4 sm:gap-6 lg:gap-8" id="newsContainer">
+                <!-- News will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section - Responsive Form -->
+    <section id="contact" class="section-padding bg-white">
+        <div class="responsive-container">
+            <h2 class="subheading-responsive font-bold text-center mb-8 sm:mb-12 text-blue-800">
+                Əlaqə və Qeydiyyat
+            </h2>
+            
+            <div class="mobile-grid tablet-grid-2 gap-6 sm:gap-8 lg:gap-12">
+                <!-- Contact Info -->
+                <div class="space-y-6">
+                    <h3 class="text-xl font-bold">Əlaqə Məlumatları</h3>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-blue-600 text-xl mt-1 mr-4 flex-shrink-0"></i>
+                            <div>
+                                <div class="font-bold text-sm sm:text-base">Ünvan</div>
+                                <div class="text-gray-600 text-sm sm:text-base">Bakı şəhəri, Nəsimi rayonu, Təhsil küç. 123</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <i class="fas fa-phone text-blue-600 text-xl mt-1 mr-4 flex-shrink-0"></i>
+                            <div>
+                                <div class="font-bold text-sm sm:text-base">Telefon</div>
+                                <div class="text-gray-600 text-sm sm:text-base">+994 12 345 67 89</div>
+                                <div class="text-gray-600 text-sm sm:text-base">+994 50 123 45 67 (WhatsApp)</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <i class="fas fa-envelope text-blue-600 text-xl mt-1 mr-4 flex-shrink-0"></i>
+                            <div>
+                                <div class="font-bold text-sm sm:text-base">E-mail</div>
+                                <div class="text-gray-600 text-sm sm:text-base">info@omurboyutehsil.edu.az</div>
+                                <div class="text-gray-600 text-sm sm:text-base">qeydiyyat@omurboyutehsil.edu.az</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <i class="fas fa-clock text-blue-600 text-xl mt-1 mr-4 flex-shrink-0"></i>
+                            <div>
+                                <div class="font-bold text-sm sm:text-base">İş Saatları</div>
+                                <div class="text-gray-600 text-sm sm:text-base">Bazar ertəsi - Cümə: 09:00 - 18:00</div>
+                                <div class="text-gray-600 text-sm sm:text-base">Şənbə: 10:00 - 16:00</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Social Media - Responsive -->
+                    <div>
+                        <h4 class="font-bold mb-4 text-sm sm:text-base">Bizi İzləyin</h4>
+                        <div class="flex flex-wrap gap-2 sm:gap-3">
+                            <a href="#" class="bg-blue-600 text-white w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center hover:bg-blue-700 transition touch-button">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="bg-blue-400 text-white w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center hover:bg-blue-500 transition touch-button">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="bg-pink-600 text-white w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center hover:bg-pink-700 transition touch-button">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="bg-blue-700 text-white w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center hover:bg-blue-800 transition touch-button">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="bg-green-500 text-white w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center hover:bg-green-600 transition touch-button">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <a href="#" class="bg-red-500 text-white w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center hover:bg-red-600 transition touch-button">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Registration Form -->
+                <div class="bg-gray-50 p-4 sm:p-6 rounded-xl shadow-md">
+                    <h3 class="text-xl font-bold mb-6">Qeydiyyat Forması</h3>
+                    <form id="registrationForm">
+                        <div class="space-y-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block mb-1 font-bold text-sm sm:text-base">Ad *</label>
+                                    <input type="text" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm sm:text-base" required>
+                                </div>
+                                <div>
+                                    <label class="block mb-1 font-bold text-sm sm:text-base">Soyad *</label>
+                                    <input type="text" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm sm:text-base" required>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label class="block mb-1 font-bold text-sm sm:text-base">E-mail *</label>
+                                <input type="email" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm sm:text-base" required>
+                            </div>
+                            
+                            <div>
+                                <label class="block mb-1 font-bold text-sm sm:text-base">Telefon *</label>
+                                <input type="tel" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm sm:text-base" required>
+                            </div>
+                            
+                            <div>
+                                <label class="block mb-1 font-bold text-sm sm:text-base">İlgi Bölməsi *</label>
+                                <select class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm sm:text-base touch-button">
+                                    <option>Qiyabi və Təkrər Ali Təhsil</option>
+                                    <option>Mühəndis İnkişafı və Sertifikatlaşdırma</option>
+                                    <option>Beynəlxalq Dil Bölməsi</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label class="block mb-1 font-bold text-sm sm:text-base">Maraqlı Kurs</label>
+                                <select class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm sm:text-base touch-button">
+                                    <option>Seçin</option>
+                                    <option>Full Stack Web Development</option>
+                                    <option>İngilis Dili C1 Səviyyəsi</option>
+                                    <option>Sənaye 4.0 və IoT</option>
+                                    <option>Digital Marketing</option>
+                                    <option>Data Science</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label class="block mb-1 font-bold text-sm sm:text-base">Qeyd</label>
+                                <textarea class="w-full border border-gray-300 rounded-lg px-4 py-3 h-32 text-sm sm:text-base" placeholder="Əlavə qeydləriniz..."></textarea>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <input type="checkbox" id="privacy" class="mr-2" required>
+                                <label for="privacy" class="text-sm">
+                                    <a href="#" class="text-blue-600 hover:underline">Məxfilik Siyasəti</a>ni oxudum və qəbul edirəm
+                                </label>
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-blue-600 text-white py-3 sm:py-4 rounded-lg font-bold hover:bg-blue-700 transition touch-button text-sm sm:text-base">
+                                Müraciət Göndər
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer - Responsive -->
+    <footer class="bg-blue-900 text-white py-8 sm:py-12">
+        <div class="responsive-container">
+            <div class="mobile-grid tablet-grid-2 desktop-grid-3 gap-6 sm:gap-8">
+                <div>
+                    <h3 class="text-lg sm:text-xl font-bold mb-4">Ömürboyu Təhsil Məktəbi</h3>
+                    <p class="text-sm sm:text-base opacity-90">
+                        Peşəkar inkişaf və davamlı təhsil üçün ən yaxşı həllər. 
+                        15 ildən artıq təcrübə ilə keyfiyyətli təhsil.
+                    </p>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg sm:text-xl font-bold mb-4">Tez Keçidlər</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#courses" class="opacity-90 hover:text-yellow-300 text-sm sm:text-base">Kurslar</a></li>
+                        <li><a href="#departments" class="opacity-90 hover:text-yellow-300 text-sm sm:text-base">Bölmələr</a></li>
+                        <li><a href="#schedule" class="opacity-90 hover:text-yellow-300 text-sm sm:text-base">Dərs Cədvəli</a></li>
+                        <li><a href="#news" class="opacity-90 hover:text-yellow-300 text-sm sm:text-base">Xəbərlər</a></li>
+                        <li><a href="#contact" class="opacity-90 hover:text-yellow-300 text-sm sm:text-base">Əlaqə</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg sm:text-xl font-bold mb-4">Xəbər Bülleteni</h3>
+                    <p class="opacity-90 mb-4 text-sm sm:text-base">
+                        Yeniliklərdən xəbərdar olmaq üçün abunə olun
+                    </p>
+                    <div class="flex">
+                        <input type="email" placeholder="E-mail ünvanınız" 
+                               class="flex-grow px-4 py-3 text-gray-800 rounded-l-lg text-sm sm:text-base">
+                        <button class="bg-yellow-400 text-blue-900 px-4 py-3 rounded-r-lg font-bold hover:bg-yellow-300 transition touch-button text-sm sm:text-base">
+                            Abunə
+                        </button>
+                    </div>
+                    
+                    <div class="mt-6">
+                        <h4 class="font-bold mb-2 text-sm sm:text-base">Yüklə</h4>
+                        <div class="flex gap-2">
+                            <a href="#" class="bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition touch-button flex items-center gap-2 text-sm">
+                                <i class="fab fa-apple"></i>
+                                <span>App Store</span>
+                            </a>
+                            <a href="#" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition touch-button flex items-center gap-2 text-sm">
+                                <i class="fab fa-google-play"></i>
+                                <span>Play Store</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-blue-700 mt-8 pt-6 text-center">
+                <p class="text-sm sm:text-base opacity-90">
+                    &copy; 2024 Ömürboyu Təhsil Məktəbi. Bütün hüquqlar qorunur.
+                </p>
+                <div class="mt-4 flex justify-center gap-4 text-sm">
+                    <a href="#" class="opacity-90 hover:text-yellow-300">Məxfilik Siyasəti</a>
+                    <a href="#" class="opacity-90 hover:text-yellow-300">İstifadə Şərtləri</a>
+                    <a href="#" class="opacity-90 hover:text-yellow-300">Çərəzlər</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal for course enrollment -->
+    <div id="courseModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-xl max-w-md w-full p-4 sm:p-6">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg sm:text-xl font-bold">Kurs Qeydiyyatı</h3>
+                <button id="closeModal" class="touch-button text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl sm:text-2xl"></i>
+                </button>
+            </div>
+            <p id="modalCourseName" class="mb-4 text-sm sm:text-base"></p>
+            <p class="text-gray-600 mb-6 text-sm sm:text-base">
+                Bu kurs üçün qeydiyyat formuna yönləndiriləcəksiniz. Ətraflı məlumat üçün sizinlə əlaqə saxlanılacaq.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-2 sm:gap-4">
+                <button id="cancelModal" class="flex-1 px-4 py-3 border border-gray-300 rounded-lg text-sm sm:text-base touch-button">
+                    Ləğv Et
+                </button>
+                <button id="confirmEnroll" class="flex-1 bg-blue-600 text-white px-4 py-3 rounded-lg hover:bg-blue-700 transition text-sm sm:text-base touch-button">
+                    Təsdiqlə
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Department Details Modal -->
+    <div id="departmentModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-4 sm:p-6">
+            <div class="flex justify-between items-center mb-4">
+                <h3 id="deptModalTitle" class="text-lg sm:text-xl font-bold"></h3>
+                <button id="closeDeptModal" class="touch-button text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl sm:text-2xl"></i>
+                </button>
+            </div>
+            <div id="deptModalContent" class="text-sm sm:text-base">
+                <!-- Content will be loaded dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="fixed bottom-4 right-4 bg-blue-600 text-white w-12 h-12 rounded-full shadow-lg hover:bg-blue-700 transition hidden z-40 touch-button">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Comprehensive Responsive JavaScript
+        
+        // 1. DOM Elements
+        const elements = {
+            menuBtn: document.getElementById('menuBtn'),
+            mobileMenu: document.getElementById('mobileMenu'),
+            mobileSchedule: document.getElementById('mobileSchedule'),
+            scheduleBody: document.getElementById('scheduleBody'),
+            coursesContainer: document.getElementById('coursesContainer'),
+            newsContainer: document.getElementById('newsContainer'),
+            groupSelect: document.getElementById('groupSelect'),
+            weekSelect: document.getElementById('weekSelect'),
+            backToTop: document.getElementById('backToTop'),
+            courseModal: document.getElementById('courseModal'),
+            departmentModal: document.getElementById('departmentModal'),
+            registrationForm: document.getElementById('registrationForm'),
+            loadMoreCourses: document.getElementById('loadMoreCourses')
+        };
+
+        // 2. Initialize on DOM Load
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeComponents();
+            loadInitialData();
+            setupEventListeners();
+            checkViewportSize();
+        });
+
+        // 3. Initialize Components
+        function initializeComponents() {
+            // Set initial viewport meta tag
+            setViewportMeta();
+            
+            // Initialize touch detection
+            detectTouchDevice();
+            
+            // Load components based on screen size
+            loadResponsiveComponents();
+        }
+
+        // 4. Set responsive viewport meta
+        function setViewportMeta() {
+            const viewport = document.querySelector('meta[name="viewport"]');
+            const isMobile = window.innerWidth <= 768;
+            
+            if (isMobile) {
+                viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes');
+            } else {
+                viewport.setAttribute('content', 'width=device-width, initial-scale=1.0');
+            }
+        }
+
+        // 5. Detect touch device
+        function detectTouchDevice() {
+            const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+            document.body.classList.toggle('touch-device', isTouchDevice);
+        }
+
+        // 6. Load responsive components based on screen size
+        function loadResponsiveComponents() {
+            const width = window.innerWidth;
+            
+            if (width < 640) {
+                // Mobile - Load card view for schedule
+                loadMobileSchedule();
+            } else {
+                // Tablet/Desktop - Load table view
+                loadDesktopSchedule();
+            }
+            
+            // Adjust font sizes
+            adjustFontSizes(width);
+        }
+
+        // 7. Load initial data
+        function loadInitialData() {
+            // Load courses
+            loadCourses();
+            
+            // Load news
+            loadNews();
+            
+            // Load schedule
+            loadSchedule('group1');
+        }
+
+        // 8. Courses data
+        const coursesData = [
+            { id: 1, category: 'tech', title: 'Full Stack Web Development', 
+              desc: 'HTML, CSS, JavaScript, React, Node.js öyrənin', 
+              duration: '6 ay', price: '1200 AZN', popular: true },
+            { id: 2, category: 'language', title: 'İngilis Dili C1 Səviyyəsi', 
+              desc: 'Qabaqcıl danışıq və yazı bacarıqları', 
+              duration: '3 ay', price: '600 AZN', popular: true },
+            { id: 3, category: 'tech', title: 'Sənaye 4.0 və IoT', 
+              desc: 'Müasir texnologiyalar və avtomatlaşdırma', 
+              duration: '4 ay', price: '900 AZN', popular: true },
+            { id: 4, category: 'business', title: 'Digital Marketing', 
+              desc: 'Rəqəmsal marketinq strategiyaları', 
+              duration: '3 ay', price: '800 AZN', popular: false },
+            { id: 5, category: 'tech', title: 'Data Science', 
+              desc: 'Python, Machine Learning, Data Analysis', 
+              duration: '6 ay', price: '1500 AZN', popular: false },
+            { id: 6, category: 'language', title: 'Alman Dili B1 Səviyyəsi', 
+              desc: 'Orta səviyyə Alman dili', 
+              duration: '4 ay', price: '700 AZN', popular: false }
+        ];
+
+        // 9. Load courses with responsive layout
+        function loadCourses(filter = 'all') {
+            elements.coursesContainer.innerHTML = '';
+            
+            const filteredCourses = filter === 'all' 
+                ? coursesData 
+                : coursesData.filter(course => course.category === filter);
+            
+            filteredCourses.forEach(course => {
+                const courseElement = document.createElement('div');
+                courseElement.className = 'responsive-card bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300';
+                courseElement.innerHTML = `
+                    ${course.popular ? '<div class="absolute top-3 right-3 bg-red-500 text-white px-2 py-1 rounded-full text-xs">Populyar</div>' : ''}
+                    <div class="mb-4">
+                        <span class="inline-block px-3 py-1 rounded-full text-sm font-bold mb-2 
+                            ${course.category === 'tech' ? 'bg-blue-100 text-blue-800' : 
+                              course.category === 'language' ? 'bg-green-100 text-green-800' : 
+                              'bg-purple-100 text-purple-800'}">
+                            ${course.category === 'tech' ? 'Texnologiya' : 
+                              course.category === 'language' ? 'Dil' : 'Biznes'}
+                        </span>
+                        <h3 class="text-base sm:text-lg font-bold mb-2">${course.title}</h3>
+                        <p class="text-gray-600 text-sm sm:text-base mb-4">${course.desc}</p>
+                    </div>
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                        <div>
+                            <span class="font-bold text-green-600 text-sm sm:text-base">${course.duration} • ${course.price}</span>
+                            ${course.popular ? '<div class="text-yellow-500 text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>' : ''}
+                        </div>
+                        <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition touch-button text-sm sm:text-base course-enroll" 
+                                data-course="${course.title}">
+                            Qeydiyyat
+                        </button>
+                    </div>
+                `;
+                elements.coursesContainer.appendChild(courseElement);
+            });
+            
+            // Re-attach event listeners to new buttons
+            attachCourseEnrollListeners();
+        }
+
+        // 10. News data
+        const newsData = [
+            { type: 'elan', date: '15 Yanvar 2024', 
+              title: 'Yeni Qış Dövrü Kursları', 
+              content: 'Yeni qış dövrü üçün 15-dən çox yeni kurs təklifimiz var. Erkən qeydiyyat 20% endirimlə!' },
+            { type: 'xeber', date: '10 Yanvar 2024', 
+              title: 'IELTS Hazırlıq Dərsləri Başlayır', 
+              content: 'Təcrübəli müəllimlər ilə IELTS hazırlıq dərslərimiz 1 Fevralda başlayır.' },
+            { type: 'elan', date: '5 Yanvar 2024', 
+              title: 'Təqaüd Proqramı', 
+              content: 'Əlaçı tələbələr üçün yeni təqaüd proqramı elan edildi.' },
+            { type: 'xeber', date: '20 Dekabr 2023', 
+              title: 'Yeni Laboratoriya Açılışı', 
+              content: 'Müasir texnologiyalar laboratoriyamızın açılışı edildi.' }
+        ];
+
+        // 11. Load news
+        function loadNews() {
+            elements.newsContainer.innerHTML = '';
+            
+            newsData.forEach(news => {
+                const newsElement = document.createElement('div');
+                newsElement.className = 'responsive-card bg-white rounded-xl shadow-md';
+                newsElement.innerHTML = `
+                    <div class="flex items-center mb-4">
+                        <div class="${news.type === 'elan' ? 'bg-red-500' : 'bg-green-500'} text-white px-3 py-1 rounded-full text-xs sm:text-sm font-bold">
+                            ${news.type === 'elan' ? 'ELAN' : 'XƏBƏR'}
+                        </div>
+                        <span class="ml-4 text-gray-500 text-xs sm:text-sm">
+                            <i class="far fa-calendar mr-1"></i> ${news.date}
+                        </span>
+                    </div>
+                    <h3 class="text-base sm:text-lg font-bold mb-3">${news.title}</h3>
+                    <p class="text-gray-600 text-sm sm:text-base mb-4">${news.content}</p>
+                    <a href="#" class="text-blue-600 font-bold hover:underline text-sm sm:text-base">
+                        Ətraflı Oxu →
+                    </a>
+                `;
+                elements.newsContainer.appendChild(newsElement);
+            });
+        }
+
+        // 12. Schedule data
+        const schedules = {
+            group1: [
+                { day: 'Bazar ertəsi', time: '10:00 - 12:00', subject: 'Frontend Development', 
+                  teacher: 'Əli Məmmədov', room: '304', format: 'Online' },
+                { day: 'Çərşənbə axşamı', time: '14:00 - 16:00', subject: 'Backend Development', 
+                  teacher: 'Aysel Həsənova', room: '305', format: 'Ofis' },
+                { day: 'Çərşənbə', time: '10:00 - 12:00', subject: 'Verilənlər Bazası', 
+                  teacher: 'Rəşid İbrahimov', room: '401', format: 'Hibrid' },
+                { day: 'Cümə', time: '16:00 - 18:00', subject: 'Layihə İdarəetmə', 
+                  teacher: 'Leyla Quliyeva', room: '302', format: 'Online' }
+            ],
+            group2: [
+                { day: 'Bazar ertəsi', time: '09:00 - 11:00', subject: 'Advanced Grammar', 
+                  teacher: 'Sarah Johnson', room: '101', format: 'Ofis' },
+                { day: 'Çərşənbə axşamı', time: '11:00 - 13:00', subject: 'Business English', 
+                  teacher: 'David Smith', room: '102', format: 'Online' },
+                { day: 'Cümə axşamı', time: '15:00 - 17:00', subject: 'Speaking Practice', 
+                  teacher: 'Emily Brown', room: '103', format: 'Ofis' }
+            ]
+        };
+
+        // 13. Load schedule
+        function loadSchedule(groupId) {
+            // Clear existing content
+            elements.scheduleBody.innerHTML = '';
+            elements.mobileSchedule.innerHTML = '';
+            
+            const schedule = schedules[groupId] || schedules.group1;
+            
+            // Desktop/Tablet view
+            schedule.forEach(item => {
+                const row = document.createElement('tr');
+                row.className = 'hover:bg-blue-50';
+                row.innerHTML = `
+                    <td class="border border-gray-300 p-2 sm:p-3">${item.day}</td>
+                    <td class="border border-gray-300 p-2 sm:p-3">${item.time}</td>
+                    <td class="border border-gray-300 p-2 sm:p-3">${item.subject}</td>
+                    <td class="border border-gray-300 p-2 sm:p-3">${item.teacher}</td>
+                    <td class="border border-gray-300 p-2 sm:p-3">${item.room}</td>
+                    <td class="border border-gray-300 p-2 sm:p-3">
+                        <span class="px-2 py-1 rounded text-xs ${item.format === 'Online' ? 'bg-green-100 text-green-800' : 
+                                                                 item.format === 'Hibrid' ? 'bg-yellow-100 text-yellow-800' : 
+                                                                 'bg-blue-100 text-blue-800'}">
+                            ${item.format}
+                        </span>
+                    </td>
+                `;
+                elements.scheduleBody.appendChild(row);
+            });
+            
+            // Mobile view (cards)
+            if (window.innerWidth < 640) {
+                loadMobileScheduleCards(schedule);
+            }
+        }
+
+        // 14. Load mobile schedule cards
+        function loadMobileScheduleCards(schedule) {
+            schedule.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'bg-white p-4 rounded-lg shadow mb-3';
+                card.innerHTML = `
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <h4 class="font-bold text-base">${item.subject}</h4>
+                            <p class="text-sm text-gray-600">${item.teacher}</p>
+                        </div>
+                        <span class="px-2 py-1 rounded text-xs ${item.format === 'Online' ? 'bg-green-100 text-green-800' : 
+                                                               item.format === 'Hibrid' ? 'bg-yellow-100 text-yellow-800' : 
+                                                               'bg-blue-100 text-blue-800'}">
+                            ${item.format}
+                        </span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2 text-sm">
+                        <div>
+                            <i class="far fa-calendar mr-1"></i>
+                            <span>${item.day}</span>
+                        </div>
+                        <div>
+                            <i class="far fa-clock mr-1"></i>
+                            <span>${item.time}</span>
+                        </div>
+                        <div class="col-span-2">
+                            <i class="fas fa-door-open mr-1"></i>
+                            <span>Otaq: ${item.room}</span>
+                        </div>
+                    </div>
+                `;
+                elements.mobileSchedule.appendChild(card);
+            });
+        }
+
+        // 15. Department details
+        const departmentDetails = {
+            qiyabi: {
+                title: 'Qiyabi və Təkrər Ali Təhsil',
+                content: `
+                    <p class="mb-4">Bu bölmə işləyən şəxslər üçün ali təhsil almaq imkanı yaradır.</p>
+                    <h4 class="font-bold mb-2">Proqramlar:</h4>
+                    <ul class="list-disc pl-5 mb-4 space-y-1">
+                        <li>Bakalavr dərəcəsi (4 il)</li>
+                        <li>Magistratura (2 il)</li>
+                        <li>İkinci ali təhsil</li>
+                        <li>MBA proqramları</li>
+                    </ul>
+                    <h4 class="font-bold mb-2">Formatlar:</h4>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>Tam qiyabi (axşam)</li>
+                        <li>Həftəsonu</li>
+                        <li>Online tədris</li>
+                        <li>Hibrid format</li>
+                    </ul>
+                `
+            },
+            muhendis: {
+                title: 'Mühəndis İnkişafı və Sertifikatlaşdırma',
+                content: `
+                    <p class="mb-4">Peşəkar mühəndislər üçün təkmilləşdirmə və sertifikatlaşdırma proqramları.</p>
+                    <h4 class="font-bold mb-2">Sahələr:</h4>
+                    <ul class="list-disc pl-5 mb-4 space-y-1">
+                        <li>İnformasiya Texnologiyaları</li>
+                        <li>Elektronika və Robototexnika</li>
+                        <li>Quruculuq və Arxitektura</li>
+                        <li>Enerji və Ekologiya</li>
+                    </ul>
+                    <h4 class="font-bold mb-2">Sertifikatlar:</h4>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>Microsoft Certified Professional</li>
+                        <li>Cisco CCNA/CCNP</li>
+                        <li>Project Management Professional (PMP)</li>
+                        <li>Autodesk Certified Professional</li>
+                    </ul>
+                `
+            },
+            dil: {
+                title: 'Beynəlxalq Dil Bölməsi',
+                content: `
+                    <p class="mb-4">Beynəlxalq səviyyədə tanınan dil sertifikatları üçün təhsil.</p>
+                    <h4 class="font-bold mb-2">Dillər:</h4>
+                    <ul class="list-disc pl-5 mb-4 space-y-1">
+                        <li>İngilis dili (A1-C2)</li>
+                        <li>Alman dili (A1-C1)</li>
+                        <li>Fransız dili (A1-B2)</li>
+                        <li>İspan dili (A1-B2)</li>
+                        <li>Rus dili (A1-C1)</li>
+                    </ul>
+                    <h4 class="font-bold mb-2">Sınav Hazırlığı:</h4>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>IELTS Academic/General</li>
+                        <li>TOEFL iBT</li>
+                        <li>TestDaF (Alman)</li>
+                        <li>DELF/DALF (Fransız)</li>
+                        <li>DELE (İspan)</li>
+                    </ul>
+                `
+            }
+        };
+
+        // 16. Setup event listeners
+        function setupEventListeners() {
+            // Mobile menu toggle
+            elements.menuBtn.addEventListener('click', toggleMobileMenu);
+            
+            // Schedule change
+            elements.groupSelect.addEventListener('change', function() {
+                loadSchedule(this.value);
+            });
+            
+            elements.weekSelect.addEventListener('change', function() {
+                // In a real app, this would load different week data
+                console.log('Week changed to:', this.value);
+            });
+            
+            // Course filter buttons
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Update active button
+                    document.querySelectorAll('.filter-btn').forEach(b => {
+                        b.classList.remove('bg-blue-600', 'text-white');
+                        b.classList.add('bg-gray-200', 'hover:bg-gray-300');
+                    });
+                    this.classList.remove('bg-gray-200', 'hover:bg-gray-300');
+                    this.classList.add('bg-blue-600', 'text-white');
+                    
+                    // Filter courses
+                    loadCourses(this.dataset.filter);
+                });
+            });
+            
+            // Department details
+            document.querySelectorAll('.department-details').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const dept = this.dataset.dept;
+                    showDepartmentModal(dept);
+                });
+            });
+            
+            // Back to top
+            elements.backToTop.addEventListener('click', scrollToTop);
+            
+            // Window scroll for back to top button
+            window.addEventListener('scroll', handleScroll);
+            
+            // Window resize for responsive adjustments
+            window.addEventListener('resize', handleResize);
+            
+            // Touch event for better mobile UX
+            document.addEventListener('touchstart', handleTouchStart, { passive: true });
+            
+            // Form submission
+            elements.registrationForm.addEventListener('submit', handleFormSubmit);
+            
+            // Load more courses
+            elements.loadMoreCourses.addEventListener('click', loadMoreCourses);
+            
+            // Modal controls
+            setupModalControls();
+        }
+
+        // 17. Modal controls
+        function setupModalControls() {
+            // Course modal
+            document.getElementById('closeModal').addEventListener('click', () => {
+                elements.courseModal.classList.add('hidden');
+            });
+            
+            document.getElementById('cancelModal').addEventListener('click', () => {
+                elements.courseModal.classList.add('hidden');
+            });
+            
+            document.getElementById('confirmEnroll').addEventListener('click', confirmEnrollment);
+            
+            // Department modal
+            document.getElementById('closeDeptModal').addEventListener('click', () => {
+                elements.departmentModal.classList.add('hidden');
+            });
+        }
+
+        // 18. Attach course enrollment listeners
+        function attachCourseEnrollListeners() {
+            document.querySelectorAll('.course-enroll').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const courseName = this.dataset.course;
+                    showCourseModal(courseName);
+                });
+            });
+        }
+
+        // 19. Show course modal
+        function showCourseModal(courseName) {
+            document.getElementById('modalCourseName').textContent = 
+                `"${courseName}" kursu üçün qeydiyyat etmək istədiyinizə əminsiniz?`;
+            elements.courseModal.classList.remove('hidden');
+        }
+
+        // 20. Show department modal
+        function showDepartmentModal(deptId) {
+            const dept = departmentDetails[deptId];
+            if (dept) {
+                document.getElementById('deptModalTitle').textContent = dept.title;
+                document.getElementById('deptModalContent').innerHTML = dept.content;
+                elements.departmentModal.classList.remove('hidden');
+            }
+        }
+
+        // 21. Confirm enrollment
+        function confirmEnrollment() {
+            const courseName = document.getElementById('modalCourseName').textContent.match(/"([^"]+)"/)[1];
+            alert(`"${courseName}" kursu üçün qeydiyyatınız qəbul edildi!\nSizinlə 24 saat ərzində əlaqə saxlanılacaq.`);
+            elements.courseModal.classList.add('hidden');
+            
+            // Scroll to contact form
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // 22. Handle form submission
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            
+            // In a real application, you would send this data to a server
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData);
+            
+            // Show success message
+            alert('Müraciətiniz uğurla göndərildi!\nTəlim mərkəzimizin nümayəndəsi sizinlə əlaqə saxlayacaq.');
+            
+            // Reset form
+            e.target.reset();
+            
+            // Log data (in real app, remove this)
+            console.log('Form data:', data);
+        }
+
+        // 23. Load more courses
+        function loadMoreCourses() {
+            // In a real app, this would load from server
+            const additionalCourses = [
+                { id: 7, category: 'business', title: 'İnsan Resursları İdarəetməsi', 
+                  desc: 'HR strategiyaları və idarəetmə', 
+                  duration: '2 ay', price: '500 AZN', popular: false },
+                { id: 8, category: 'tech', title: 'Kibertəhlükəsizlik', 
+                  desc: 'Şəbəkə və məlumat təhlükəsizliyi', 
+                  duration: '3 ay', price: '1000 AZN', popular: true },
+                { id: 9, category: 'language', title: 'Rus Dili B2 Səviyyəsi', 
+                  desc: 'İş və ünsiyyət üçün Rus dili', 
+                  duration: '3 ay', price: '550 AZN', popular: false }
+            ];
+            
+            additionalCourses.forEach(course => {
+                coursesData.push(course);
+            });
+            
+            // Reload courses with current filter
+            const activeFilter = document.querySelector('.filter-btn.bg-blue-600').dataset.filter;
+            loadCourses(activeFilter);
+            
+            // Hide button if enough courses loaded
+            if (coursesData.length >= 12) {
+                elements.loadMoreCourses.style.display = 'none';
+            }
+        }
+
+        // 24. Toggle mobile menu
+        function toggleMobileMenu() {
+            elements.mobileMenu.classList.toggle('hidden');
+            document.body.style.overflow = elements.mobileMenu.classList.contains('hidden') ? '' : 'hidden';
+        }
+
+        // 25. Handle scroll
+        function handleScroll() {
+            // Show/hide back to top button
+            if (window.scrollY > 300) {
+                elements.backToTop.classList.remove('hidden');
+            } else {
+                elements.backToTop.classList.add('hidden');
+            }
+            
+            // Close mobile menu on scroll
+            if (!elements.mobileMenu.classList.contains('hidden')) {
+                elements.mobileMenu.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // 26. Scroll to top
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // 27. Handle resize
+        function handleResize() {
+            setViewportMeta();
+            checkViewportSize();
+            loadResponsiveComponents();
+            
+            // Reload schedule with appropriate view
+            const currentGroup = elements.groupSelect.value;
+            loadSchedule(currentGroup);
+        }
+
+        // 28. Check viewport size
+        function checkViewportSize() {
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            
+            // Add viewport size class for debugging (remove in production)
+            document.body.setAttribute('data-viewport', `${width}x${height}`);
+            
+            // Adjust layout based on orientation
+            if (width > height) {
+                document.body.classList.add('landscape');
+                document.body.classList.remove('portrait');
+            } else {
+                document.body.classList.add('portrait');
+                document.body.classList.remove('landscape');
+            }
+        }
+
+        // 29. Handle touch start for better UX
+        function handleTouchStart(e) {
+            // Add active state to touched element
+            const target = e.target;
+            if (target.classList.contains('touch-button')) {
+                target.classList.add('active');
+                setTimeout(() => {
+                    target.classList.remove('active');
+                }, 300);
+            }
+        }
+
+        // 30. Adjust font sizes based on screen width
+        function adjustFontSizes(width) {
+            const baseSize = 16;
+            let scaleFactor = 1;
+            
+            if (width < 400) {
+                scaleFactor = 0.85;
+            } else if (width < 640) {
+                scaleFactor = 0.9;
+            } else if (width > 1920) {
+                scaleFactor = 1.1;
+            }
+            
+            document.documentElement.style.fontSize = `${baseSize * scaleFactor}px`;
+        }
+
+        // 31. Load desktop schedule
+        function loadDesktopSchedule() {
+            elements.mobileSchedule.style.display = 'none';
+            document.querySelector('.responsive-table').style.display = 'block';
+        }
+
+        // 32. Load mobile schedule
+        function loadMobileSchedule() {
+            document.querySelector('.responsive-table').style.display = 'none';
+            elements.mobileSchedule.style.display = 'block';
+            const currentGroup = elements.groupSelect.value;
+            loadSchedule(currentGroup);
+        }
+
+        // 33. Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Close mobile menu if open
+                    if (!elements.mobileMenu.classList.contains('hidden')) {
+                        elements.mobileMenu.classList.add('hidden');
+                        document.body.style.overflow = '';
+                    }
+                    
+                    // Calculate offset based on screen size
+                    const offset = window.innerWidth < 640 ? 70 : 80;
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - offset,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // 34. Prevent zoom on double tap (iOS)
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function(event) {
+            const now = (new Date()).getTime();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+
+        // 35. Keyboard navigation support
+        document.addEventListener('keydown', function(e) {
+            // Close modals with Escape key
+            if (e.key === 'Escape') {
+                if (!elements.courseModal.classList.contains('hidden')) {
+                    elements.courseModal.classList.add('hidden');
+                }
+                if (!elements.departmentModal.classList.contains('hidden')) {
+                    elements.departmentModal.classList.add('hidden');
+                }
+            }
+            
+            // Tab key navigation for better accessibility
+            if (e.key === 'Tab') {
+                // Ensure focus remains within modal if open
+                if (!elements.courseModal.classList.contains('hidden')) {
+                    const focusableElements = elements.courseModal.querySelectorAll(
+                        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+                    );
+                    const firstElement = focusableElements[0];
+                    const lastElement = focusableElements[focusableElements.length - 1];
+                    
+                    if (e.shiftKey && document.activeElement === firstElement) {
+                        lastElement.focus();
+                        e.preventDefault();
+                    } else if (!e.shiftKey && document.activeElement === lastElement) {
+                        firstElement.focus();
+                        e.preventDefault();
+                    }
+                }
+            }
+        });
+
+        // 36. Add CSS for active states
+        const style = document.createElement('style');
+        style.textContent = `
+            .touch-button.active {
+                transform: scale(0.95);
+                opacity: 0.9;
+            }
+            
+            @media (hover: hover) {
+                .touch-button:hover {
+                    opacity: 0.9;
+                }
+            }
+            
+            @media (hover: none) {
+                .touch-button:active {
+                    transform: scale(0.95);
+                    opacity: 0.9;
+                }
+            }
+            
+            /* Print styles */
+            @media print {
+                nav, footer, .no-print, #backToTop, button {
+                    display: none !important;
+                }
+                
+                body {
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+                
+                .responsive-container {
+                    max-width: 100% !important;
+                    padding: 0 !important;
+                }
+                
+                a {
+                    color: #000 !important;
+                    text-decoration: none !important;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // 37. Service Worker for PWA (optional)
+        if ('serviceWorker' in navigator && window.location.protocol === 'https:') {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js').catch(function(error) {
+                    console.log('Service Worker registration failed:', error);
+                });
+            });
+        }
+
+        // 38. Add beforeunload confirmation for form
+        window.addEventListener('beforeunload', function(e) {
+            const form = document.getElementById('registrationForm');
+            if (form && Array.from(form.elements).some(el => el.value)) {
+                e.preventDefault();
+                e.returnValue = '';
+            }
+        });
+
+        console.log('Responsive website initialized successfully!');
+    </script>
+</body>
+</html>
